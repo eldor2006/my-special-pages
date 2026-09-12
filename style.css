@@ -1,0 +1,923 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+    background: #080808;
+    color: #f1f1f1;
+    font-family: "Inter", sans-serif;
+    overflow: hidden;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255,255,255,0.07),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255,255,255,0.035),
+            transparent 30%
+        ),
+        #080808;
+
+    z-index: -3;
+}
+
+
+.grain {
+    position: fixed;
+    inset: 0;
+
+    opacity: 0.035;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.5'/%3E%3C/svg%3E");
+
+    pointer-events: none;
+    z-index: 100;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.top-bar {
+    position: fixed;
+
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(90%, 600px);
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    z-index: 50;
+}
+
+
+#counter {
+    font-size: 11px;
+    color: #777;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+}
+
+
+.progress {
+    height: 1px;
+
+    flex: 1;
+
+    background: rgba(255,255,255,0.12);
+}
+
+
+#progressLine {
+    width: 10%;
+    height: 100%;
+
+    background: #eee;
+
+    transition: width 0.7s ease;
+}
+
+
+/* =========================
+   SCREENS
+========================= */
+
+main {
+    width: 100%;
+    height: 100vh;
+}
+
+
+.screen {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow-y: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 20px 50px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        visibility 0.7s;
+
+}
+
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+.content,
+.intro,
+.final-content {
+    width: min(100%, 650px);
+
+    text-align: center;
+
+    margin: auto;
+}
+
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.small-text {
+    color: #777;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 25px;
+}
+
+
+h1,
+h2 {
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-weight: 400;
+
+    line-height: 1.12;
+}
+
+
+h1 {
+    font-size: clamp(55px, 11vw, 100px);
+
+    letter-spacing: -3px;
+}
+
+
+h2 {
+    font-size: clamp(38px, 7vw, 65px);
+
+    margin-bottom: 35px;
+
+    letter-spacing: -1.5px;
+}
+
+
+.description {
+    margin-top: 35px;
+
+    color: #999;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+
+.number {
+    color: #555;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
+}
+
+
+.text {
+    max-width: 520px;
+
+    margin: 20px auto;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #ddd;
+}
+
+
+.muted {
+    color: #777;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.next-btn {
+    margin-top: 35px;
+
+    padding: 15px 22px;
+
+    background: transparent;
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    color: #ddd;
+
+    border-radius: 100px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition:
+        background 0.3s,
+        border 0.3s,
+        transform 0.3s;
+}
+
+
+.next-btn:hover {
+    background: rgba(255,255,255,0.08);
+
+    border-color: rgba(255,255,255,0.4);
+
+    transform: translateY(-2px);
+}
+
+
+.next-btn span {
+    margin-left: 8px;
+}
+
+
+/* =========================
+   PHOTOS
+========================= */
+
+.photo-box {
+    width: min(100%, 470px);
+
+    margin: 0 auto 35px;
+
+    border-radius: 3px;
+
+    overflow: hidden;
+
+    background: #111;
+
+    aspect-ratio: 4 / 5;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.5);
+
+    animation: photoAppear 1s ease;
+}
+
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    filter: grayscale(15%);
+
+    transition: transform 0.8s ease;
+}
+
+
+.photo-box:hover img {
+    transform: scale(1.03);
+}
+
+
+.small-photo {
+    width: min(100%, 380px);
+}
+
+
+@keyframes photoAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================
+   HABITS
+========================= */
+
+.habits {
+    max-width: 500px;
+
+    margin: 20px auto;
+}
+
+
+.habit {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    text-align: left;
+
+    padding: 22px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+
+.habit span {
+    color: #555;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.habit p {
+    color: #aaa;
+
+    line-height: 1.5;
+}
+
+
+.habit strong {
+    color: #eee;
+
+    font-weight: 400;
+}
+
+
+.secret-word {
+    margin-top: 30px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 30px;
+
+    color: #eee;
+}
+
+
+.secret-word span {
+    font-size: 20px;
+}
+
+
+.tiny-note {
+    margin-top: 15px;
+
+    color: #555;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   THOUGHTS
+========================= */
+
+.thoughts {
+    text-align: left;
+
+    max-width: 500px;
+
+    margin: 0 auto;
+}
+
+
+.thoughts p {
+    padding: 18px 0;
+
+    color: #aaa;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+
+.thoughts p:first-child {
+    color: #ddd;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.hint {
+    color: #555;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    margin-top: -15px;
+
+    margin-bottom: 25px;
+}
+
+
+.cards {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    max-width: 550px;
+
+    margin: auto;
+}
+
+
+.card {
+    position: relative;
+
+    min-height: 70px;
+
+    padding: 15px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    background: rgba(255,255,255,0.025);
+
+    color: #aaa;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+
+.card:hover {
+    background: rgba(255,255,255,0.07);
+
+    border-color: rgba(255,255,255,0.25);
+
+    color: #eee;
+}
+
+
+.card span {
+    display: block;
+
+    color: #444;
+
+    font-size: 9px;
+
+    margin-bottom: 7px;
+}
+
+
+.card b {
+    position: absolute;
+
+    right: 15px;
+
+    top: 25px;
+
+    color: #555;
+}
+
+
+.special-card {
+    grid-column: 1 / -1;
+}
+
+
+.card-message {
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border-top: 1px solid rgba(255,255,255,0.15);
+
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 23px;
+
+    line-height: 1.5;
+
+    color: #eee;
+
+    animation: fadeIn 0.7s ease;
+}
+
+
+.card-message.show {
+    display: block;
+}
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal-text {
+    max-width: 500px;
+
+    margin: auto;
+
+    text-align: left;
+}
+
+
+.reveal-text p {
+    color: #888;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+
+    margin: 22px 0;
+}
+
+
+.reveal-text .highlight {
+    color: #eee;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 28px;
+
+    text-align: center;
+
+    margin-top: 35px;
+}
+
+
+/* =========================
+   ABOUT ME
+========================= */
+
+.about-me {
+    max-width: 500px;
+
+    margin: auto;
+
+    text-align: left;
+}
+
+
+.about-me p {
+    color: #999;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+
+    margin: 22px 0;
+}
+
+
+.about-me .question {
+    text-align: center;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 65px;
+
+    color: #eee;
+
+    margin: 40px 0;
+}
+
+
+.about-me .highlight {
+    color: #eee;
+
+    text-align: center;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 25px;
+}
+
+
+/* =========================
+   LOVE
+========================= */
+
+.love-symbol {
+    font-family: Georgia, serif;
+
+    font-size: 60px;
+
+    font-weight: 300;
+
+    color: #aaa;
+
+    margin-bottom: 10px;
+
+    animation: pulse 3s infinite;
+}
+
+
+@keyframes pulse {
+
+    0%, 100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+.love-text {
+    max-width: 500px;
+
+    margin: auto;
+
+    text-align: left;
+}
+
+
+.love-text p {
+    color: #999;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+
+    margin: 22px 0;
+}
+
+
+.love-text .space {
+    margin-top: 50px;
+}
+
+
+.love-text p:last-child {
+    color: #eee;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 23px;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final-screen {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.06),
+            transparent 40%
+        );
+}
+
+
+.final-content h2 {
+    font-size: clamp(35px, 6vw, 55px);
+}
+
+
+.final-text {
+    color: #888;
+
+    line-height: 1.8;
+
+    margin: 25px auto 40px;
+
+    max-width: 450px;
+}
+
+
+.final-photo {
+    width: min(90vw, 560px);
+
+    margin: 40px auto;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform: scale(0.94);
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+
+.final-screen.active .final-photo {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+.final-photo img {
+    width: 100%;
+
+    display: block;
+
+    max-height: 70vh;
+
+    object-fit: cover;
+}
+
+
+.you-text {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px, 8vw, 75px);
+
+    color: #eee;
+
+    margin: 35px 0;
+}
+
+
+.final-message {
+    color: #888;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+.name {
+    margin-top: 30px;
+
+    color: #aaa;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 20px;
+}
+
+
+.restart-btn {
+    margin-top: 50px;
+
+    padding: 12px 20px;
+
+    background: transparent;
+
+    border: none;
+
+    color: #555;
+
+    cursor: pointer;
+
+    font-size: 12px;
+}
+
+
+.restart-btn:hover {
+    color: #aaa;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .screen {
+        align-items: flex-start;
+
+        padding-top: 90px;
+
+        padding-bottom: 40px;
+    }
+
+
+    .intro {
+        margin-top: 15vh;
+    }
+
+
+    h1 {
+        font-size: 58px;
+    }
+
+
+    h2 {
+        font-size: 40px;
+    }
+
+
+    .text {
+        font-size: 15px;
+    }
+
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+
+    .special-card {
+        grid-column: auto;
+    }
+
+
+    .photo-box {
+        width: 92%;
+    }
+
+
+    .final-photo {
+        width: 95%;
+    }
+
+
+    .top-bar {
+        top: 15px;
+    }
+
+}

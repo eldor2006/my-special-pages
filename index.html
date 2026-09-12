@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bir inson haqida...</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Fon effektlari -->
+    <div class="background"></div>
+    <div class="grain"></div>
+
+    <!-- Yuqoridagi progress -->
+    <div class="top-bar">
+        <span id="counter">01 / 10</span>
+        <div class="progress">
+            <div id="progressLine"></div>
+        </div>
+    </div>
+
+
+    <main>
+
+        <!-- 1 -->
+        <section class="screen active" id="screen1">
+
+            <div class="intro">
+
+                <p class="small-text">kichik bir hikoya</p>
+
+                <h1>
+                    Bir inson<br>
+                    haqida...
+                </h1>
+
+                <p class="description">
+                    U o‘zi haqida yozilganini<br>
+                    hali bilmaydi.
+                </p>
+
+                <button class="next-btn" onclick="nextScreen()">
+                    Kirish <span>→</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 2 -->
+        <section class="screen" id="screen2">
+
+            <div class="content">
+
+                <p class="number">01</p>
+
+                <h2>
+                    Uni bir qarashda<br>
+                    tushunib bo‘lmaydi.
+                </h2>
+
+                <div class="photo-box">
+                    <img src="images/photo1.jpg" alt="Photo 1">
+                </div>
+
+                <p class="text">
+                    Ba’zi insonlar haqida birinchi tasurot
+                    yetarli bo‘lmaydi.
+                </p>
+
+                <p class="text muted">
+                    Ularni biroz kuzatish kerak.
+                </p>
+
+                <button class="next-btn" onclick="nextScreen()">
+                    Davom etish →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 3 -->
+        <section class="screen" id="screen3">
+
+            <div class="content">
+
+                <p class="number">02</p>
+
+                <h2>
+                    U ko‘p gapirmaydi.
+                </h2>
+
+                <div class="photo-box small-photo">
+                    <img src="images/photo2.jpg" alt="Photo 2">
+                </div>
+
+                <p class="text">
+                    Lekin bu uning aytadigan gapi yo‘q
+                    degani emas.
+                </p>
+
+                <p class="text">
+                    Aksincha...
+                </p>
+
+                <p class="text muted">
+                    Ba’zan jim turganida ham juda ko‘p
+                    narsani o‘ylayotgan bo‘ladi.
+                </p>
+
+                <button class="next-btn" onclick="nextScreen()">
+                    Davom etish →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 4 -->
+        <section class="screen" id="screen4">
+
+            <div class="content habit-page">
+
+                <p class="number">03</p>
+
+                <h2>
+                    Buni sezish<br>
+                    qiyin emas.
+                </h2>
+
+                <div class="habits">
+
+                    <div class="habit">
+                        <span>01</span>
+                        <p>Qorni ochsa,<br><strong>aytadi.</strong></p>
+                    </div>
+
+                    <div class="habit">
+                        <span>02</span>
+                        <p>Uyqusi kelsa,<br><strong>buni ham yashirmaydi.</strong></p>
+                    </div>
+
+                    <div class="habit">
+                        <span>03</span>
+                        <p>Telefon esa...</p>
+                    </div>
+
+                </div>
+
+                <div class="secret-word">
+                    Bezzukda.
+                    <span>😄</span>
+                </div>
+
+                <p class="tiny-note">
+                    Ba’zi mayda narsalar insonni
+                    boshqalardan ajratib turadi.
+                </p>
+
+                <button class="next-btn" onclick="nextScreen()">
+                    Yana bir narsa bor →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 5 -->
+        <section class="screen" id="screen5">
+
+            <div class="content">
+
+                <p class="number">04</p>
+
+                <h2>
+                    Lekin men ko‘proq<br>
+                    boshqa narsani sezganman.
+                </h2>
+
+                <div class="photo-box">
+                    <img src="images/photo3.jpg" alt="Photo 3">
+                </div>
+
+                <div class="thoughts">
+
+                    <p>
+                        Men sening qachon qorning ochishini
+                        yoki qachon uxlaging kelishini emas...
+                    </p>
+
+                    <p>
+                        Odamlarga ko‘rsatmaydigan
+                        tomonlaringni ko‘proq eslab qolganman.
+                    </p>
+
+                    <p>
+                        Ko‘p narsani o‘ylashingni.
+                    </p>
+
+                    <p>
+                        Ba’zan kayfiyatingni yashira olmasligingni.
+                    </p>
+
+                    <p>
+                        Va ayrim narsalarni ichingda
+                        olib yurishingni.
+                    </p>
+
+                </div>
+
+                <button class="next-btn" onclick="nextScreen()">
+                    Davom etish →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 6 -->
+        <section class="screen" id="screen6">
+
+            <div class="content">
+
+                <p class="number">05</p>
+
+                <h2>
+                    Senda menga<br>
+                    yoqadigan narsalar.
+                </h2>
+
+                <div class="photo-box small-photo">
+                    <img src="images/photo4.jpg" alt="Photo 4">
+                </div>
+
+                <p class="hint">
+                    Har birini bosib ko‘r.
+                </p>
+
+                <div class="cards">
+
+                    <button class="card" onclick="revealCard(this)">
+                        <span>01</span>
+                        Sukunating
+                        <b>+</b>
+                    </button>
+
+                    <button class="card" onclick="revealCard(this)">
+                        <span>02</span>
+                        Kulishing
+                        <b>+</b>
+                    </button>
+
+                    <button class="card" onclick="revealCard(this)">
+                        <span>03</span>
+                        O‘ylashing
+                        <b>+</b>
+                    </button>
+
+                    <button class="card" onclick="revealCard(this)">
+                        <span>04</span>
+                        O‘zing bo‘lishing
+                        <b>+</b>
+                    </button>
+
+                    <button class="card" onclick="revealCard(this)">
+                        <span>05</span>
+                        Mayda odatlaring
+                        <b>+</b>
+                    </button>
+
+                    <button class="card" onclick="revealCard(this)">
+                        <span>06</span>
+                        Men tushunib ulgurgan tomonlaring
+                        <b>+</b>
+                    </button>
+
+                    <button class="card special-card" onclick="revealCard(this)">
+                        <span>07</span>
+                        Nomi yo‘q bir narsa
+                        <b>+</b>
+                    </button>
+
+                </div>
+
+                <div id="cardMessage" class="card-message">
+                    Buni nomlash qiyin.<br>
+                    Shunchaki... sening o‘zing.
+                </div>
+
+                <button class="next-btn" onclick="nextScreen()">
+                    Keyingisi →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 7 -->
+        <section class="screen" id="screen7">
+
+            <div class="content">
+
+                <p class="number">06</p>
+
+                <h2>
+                    O‘zing sezmaydigan<br>
+                    bir narsang bor.
+                </h2>
+
+                <div class="photo-box">
+                    <img src="images/photo5.jpg" alt="Photo 5">
+                </div>
+
+                <div class="reveal-text">
+
+                    <p>
+                        Balki sen buni o‘zing ham bilmaysan.
+                    </p>
+
+                    <p>
+                        Sen odamga o‘zing o‘ylagandan
+                        ko‘ra ko‘proq ta’sir qilishing mumkin.
+                    </p>
+
+                    <p>
+                        Ba’zan inson buni o‘zi sezmaydi.
+                    </p>
+
+                    <p class="highlight">
+                        Men esa sezdim.
+                    </p>
+
+                </div>
+
+                <button class="next-btn" onclick="nextScreen()">
+                    Nega? →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 8 -->
+        <section class="screen" id="screen8">
+
+            <div class="content">
+
+                <p class="number">07</p>
+
+                <h2>
+                    Endi men haqimda.
+                </h2>
+
+                <div class="about-me">
+
+                    <p>
+                        Shu paytgacha sen haqingda gapirdim.
+                    </p>
+
+                    <p>
+                        Endi esa bitta narsani
+                        tushuntirishim kerak.
+                    </p>
+
+                    <div class="question">
+                        Nega?
+                    </div>
+
+                    <p>
+                        Nega sening kulishingni eslab qolaman?
+                    </p>
+
+                    <p>
+                        Nega ba’zan xabaringni kutaman?
+                    </p>
+
+                    <p>
+                        Nega sen bilan bog‘liq mayda
+                        narsalar ham esimda qoladi?
+                    </p>
+
+                    <p class="highlight">
+                        Buning oddiy javobi yo‘q.
+                    </p>
+
+                </div>
+
+                <button class="next-btn" onclick="nextScreen()">
+                    Balki javobi bordir... →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 9 -->
+        <section class="screen love-screen" id="screen9">
+
+            <div class="content">
+
+                <div class="love-symbol">♡</div>
+
+                <p class="number">08</p>
+
+                <h2>
+                    Yaxshi ko‘rish<br>
+                    degani nima?
+                </h2>
+
+                <div class="love-text">
+
+                    <p>
+                        Kimnidir doim o‘ylashmi?
+                    </p>
+
+                    <p>
+                        Uning kayfiyatini sezishmi?
+                    </p>
+
+                    <p>
+                        Uzoqlashganda sog‘inishmi?
+                    </p>
+
+                    <p>
+                        Yoki uning yonida bo‘lganingda
+                        o‘zingni boshqacha his qilishmi?
+                    </p>
+
+                    <p class="space">
+                        Men bularning javobini
+                        aniq bilmayman.
+                    </p>
+
+                    <p>
+                        Lekin sen bilan bog‘liq bo‘lganida,
+                        bularning ma’nosini tushunib
+                        qolgandek bo‘laman.
+                    </p>
+
+                </div>
+
+                <button class="next-btn" onclick="nextScreen()">
+                    Oxirigacha bor... →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 10 -->
+        <section class="screen final-screen" id="screen10">
+
+            <div class="final-content">
+
+                <p class="small-text">
+                    Va nihoyat...
+                </p>
+
+                <h2>
+                    Bu sahifalarning boshida<br>
+                    bir inson haqida degandim.
+                </h2>
+
+                <p class="final-text">
+                    Aslida esa men boshidan beri
+                    bitta inson haqida gapirdim.
+                </p>
+
+                <div class="final-photo">
+                    <img src="images/photo6.jpg" alt="Photo 6">
+                </div>
+
+                <p class="you-text">
+                    Sen haqingda.
+                </p>
+
+                <p class="final-message">
+                    Ba’zi gaplarni aytish qiyin.<br>
+                    Shuning uchun bu safar
+                    ularni yozib qoldirdim.
+                </p>
+
+                <p class="name">
+                    — [MOHIRA]
+                </p>
+
+                <button class="restart-btn" onclick="restart()">
+                    Boshidan ko‘rish ↻
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
